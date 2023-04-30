@@ -12,13 +12,20 @@ fs.writeFile(
 );
 
 stdout.write('Введите текст!\n');
-stdin.on('data', data => fs.appendFile(
-    path.join(__dirname, 'mynotes.txt'),
-    data,
-    err => {
-        if (err) throw err;
-    },
-));
+
+stdin.on('data', data => {
+    if (data.toString() === "exit") {
+        console.log("OOOOKKKKK")
+    } else  if (data.toString() != "exit"){
+        fs.appendFile(
+            path.join(__dirname, 'mynotes.txt'),
+            data,
+            err => {
+                if (err) throw err;
+            },
+        )
+    }
+});
 
 
 process.on('exit', () => stdout.write('Удачи в изучении Node.js!'));
@@ -29,7 +36,7 @@ process.on('exit', () => stdout.write('Удачи в изучении Node.js!')
 //         stderr.write(`Что-то пошло не так. Программа завершилась с кодом ${code}`);
 //     }
 // });
-process.exit()
+
 
 
 // stdout.write('Как тебя зовут?\n');
