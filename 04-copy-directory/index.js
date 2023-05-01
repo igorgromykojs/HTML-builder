@@ -1,10 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 
-// fs.rmdir(path.join(__dirname, 'files-copy'), err => {
-//   if(err) throw err; // не удалось удалить папку
-//    console.log('Папка успешно удалена');
-// });
+
 fs.mkdir(path.join(__dirname, 'files-copy'), err => {
 });
 
