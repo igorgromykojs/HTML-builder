@@ -14,8 +14,9 @@ fs.writeFile(
 stdout.write('Введите текст!\n');
 
 stdin.on('data', data => {
-    if (data.toString() === "exit") {
-        console.log("OOOOKKKKK")
+    if (data.toString() === "exit\n") {
+        console.log('Goodbye!');
+        process.exit();
     } else  if (data.toString() != "exit"){
         fs.appendFile(
             path.join(__dirname, 'mynotes.txt'),
@@ -26,38 +27,7 @@ stdin.on('data', data => {
         )
     }
 });
-
-
-process.on('exit', () => stdout.write('Удачи в изучении Node.js!'));
-// process.on('exit', code => {
-//     if (code === 0) {
-//         stdout.write('Всё в порядке');
-//     } else {
-//         stderr.write(`Что-то пошло не так. Программа завершилась с кодом ${code}`);
-//     }
-// });
-
-
-
-// stdout.write('Как тебя зовут?\n');
-// stdin.on('data', data => {
-//   stdout.write('Привет, ');
-//   stdout.write(data);
-//   process.exit();
-// });
-// process.on('exit', () => stdout.write('Удачи!'));
-
-
-// stdin.on('data', data => {
-//     const text = data.toString();
-//     process.exit();
-//   });
-// fs.appendFile(
-    
-//     path.join(__dirname, 'mynotes.txt'),
-//     text,
-//     err => {
-//         if (err) throw err;
-//     }
-// );
-
+process.on('SIGINT', () => {
+    console.log('Goodbye!');
+    process.exit(0);
+  });
