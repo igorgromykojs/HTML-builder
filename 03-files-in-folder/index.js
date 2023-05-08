@@ -11,7 +11,7 @@ fs.readdir(folder, {withFileTypes: true}, (error, dirEntryList) => {
             console.error(err)
             return
           }
-          console.log(`${path.basename(path.join(__dirname, 'secret-folder', dirEntry.name), path.extname(path.join(__dirname, 'secret-folder', dirEntry.name)))} - ${path.extname(path.join(__dirname, 'secret-folder', dirEntry.name))} - ${stats.size/1000}kB`);
+          console.log(`${path.basename(path.join(__dirname, 'secret-folder', dirEntry.name), path.extname(path.join(__dirname, 'secret-folder', dirEntry.name)))} - ${path.extname(path.join(__dirname, 'secret-folder', dirEntry.name)).replace('.', '')} - ${stats.size}B`);
         });
       }
     })
