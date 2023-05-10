@@ -14,10 +14,10 @@ fs.writeFile(
 stdout.write('Введите текст!\n');
 
 stdin.on('data', data => {
-    if (data.toString() === "exit\n") {
+    if (data.toString().trim() === "exit") {
         console.log('Goodbye!');
         process.exit();
-    } else  if (data.toString() != "exit"){
+    } else  if (data.toString().trim() !== "exit"){
         fs.appendFile(
             path.join(__dirname, 'mynotes.txt'),
             data,
